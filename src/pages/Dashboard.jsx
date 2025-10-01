@@ -17,11 +17,16 @@ export default function Dashboard() {
   const [stockData, setStockData] = useState([]);
   const [distributors, setDistributors] = useState([]);
   const [alerts, setAlerts] = useState([]);
+  const now = new Date();
+
   const [filters, setFilters] = useState({
     region: 'global',
     distributor: 'all',
     brand: 'all',
-    dateRange: 'last_12_months', // New default filter
+    dateRange: {
+      from: new Date(now.getFullYear(), 0, 1),
+      to: now
+    },
     comparisonPeriod: 'previous_year' // New default filter
   });
   const [selectedKPI, setSelectedKPI] = useState(null);
